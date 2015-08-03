@@ -1,5 +1,5 @@
 {
-    "name": "TheRatG/om-cms",
+    "name": "therat/om-cms",
     "description": "One more cms",
     "authors": [
         {
@@ -15,9 +15,7 @@
     ],
     "type": "project",
     "autoload": {
-        "psr-0": {
-            "": "src/"
-        }
+        "psr-4": {"TheRat\\OmCms\\": "src/"}
     },
     "require": {
         "symfony/symfony": "^2.7",
