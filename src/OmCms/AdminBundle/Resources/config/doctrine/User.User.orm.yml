@@ -1,7 +1,6 @@
 OmCms\AdminBundle\Entity\User\User:
     type: entity
     table: fos_user_user
-    repositoryClass: OmCms\AdminBundle\Entity\User\UserRepository
     id:
         id:
             type: integer
