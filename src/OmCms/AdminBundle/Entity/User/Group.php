@@ -1,7 +1,7 @@
 <?php
 namespace OmCms\AdminBundle\Entity\User;
 
-use Sonata\UserBundle\Entity\BaseGroup as BaseGroup;
+use Sonata\UserBundle\Entity\BaseGroup;
 
 class Group extends BaseGroup
 {
@@ -19,5 +19,10 @@ class Group extends BaseGroup
     public function getId()
     {
         return $this->id;
+    }
+
+    public function __construct()
+    {
+        parent::__construct('admin', []);
     }
 }
