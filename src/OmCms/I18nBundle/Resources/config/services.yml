@@ -1,0 +1,11 @@
+parameters:
+    om_cms_i18n.admin.locale.class: OmCms\I18nBundle\Admin\LocaleAdmin
+
+services:
+    om_cms_i18n.admin.locale:
+        class: %om_cms_i18n.admin.locale.class%
+        arguments: [~, OmCms\I18nBundle\Entity\Locale, OmCmsI18nBundle:LocaleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Locale}
+        calls:
+            - [setTranslationDomain, ['OmCmsI18nBundle']]

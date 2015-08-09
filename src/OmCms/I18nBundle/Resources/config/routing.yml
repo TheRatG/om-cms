@@ -1,0 +1,3 @@
+om_cms_i18n_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: OmCmsI18nBundle:Default:index }
