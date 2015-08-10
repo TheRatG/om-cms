@@ -1,0 +1,38 @@
+TheRat\OmCms\I18nBundle\Entity\Locale:
+    type: entity
+    table: i18n_locale
+    repositoryClass: OmCms\I18nBundle\Entity\LocaleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        name:
+            type: string
+            length: '50'
+        alias:
+            type: string
+            length: '5'
+            unique: true
+        enabled:
+            type: boolean
+            options:
+                default: false
+        position:
+            type: integer
+            gedmo:
+                - sortablePosition
+
+    lifecycleCallbacks: {  }
