@@ -1,7 +1,7 @@
 TheRat\OmCms\I18nBundle\Entity\Locale:
     type: entity
     table: i18n_locale
-    repositoryClass: OmCms\I18nBundle\Entity\LocaleRepository
+    repositoryClass: TheRat\OmCms\I18nBundle\Entity\LocaleRepository
     id:
         id:
             type: integer

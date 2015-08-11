@@ -268,7 +268,6 @@ class Router extends FrameworkBaseRouter
         if (false === $params) {
             return false;
         }
-
         if (isset($params['_locales'])) {
             if (false !== $pos = strpos($params['_route'], I18nLoader::ROUTING_PREFIX)) {
                 $params['_route'] = substr($params['_route'], $pos + strlen(I18nLoader::ROUTING_PREFIX));

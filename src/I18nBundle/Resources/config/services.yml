@@ -1,11 +1,25 @@
 parameters:
     om_cms_i18n.admin.locale.class: TheRat\OmCms\I18nBundle\Admin\LocaleAdmin
-
+    the_rat_om_cms_i18n.event_listener.locale_subscriber.class: TheRat\OmCms\I18nBundle\EventListener\LocaleSubscriber
+    the_rat_om_cms_i18n.twig.locale_extension.class: TheRat\OmCms\I18nBundle\Twig\LocaleExtension
 services:
     om_cms_i18n.admin.locale:
         class: %om_cms_i18n.admin.locale.class%
-        arguments: [~, OmCms\I18nBundle\Entity\Locale, OmCmsI18nBundle:LocaleAdmin]
+        arguments: [~, TheRat\OmCms\I18nBundle\Entity\Locale, OmCmsI18nBundle:LocaleAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Admin, label: Locale}
         calls:
             - [setTranslationDomain, ['OmCmsI18nBundle']]
+
+    the_rat_om_cms_i18n.event_listener.locale_subscriber:
+        class: %the_rat_om_cms_i18n.event_listener.locale_subscriber.class%
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    the_rat_om_cms_i18n.twig.locale_extension:
+        class: %the_rat_om_cms_i18n.twig.locale_extension.class%
+        arguments: [ @doctrine.orm.entity_manager ]
+        tags:
+            - { name: twig.extension }
