@@ -46,6 +46,6 @@ class LocaleExtension extends \Twig_Extension
         /** @var LocaleRepository $localeRepository */
         $localeRepository = $this->getEntityManager()
             ->getRepository('OmCmsI18nBundle:Locale');
-        return $localeRepository->findBy(['enabled' => true], ['position']);
+        return $localeRepository->findBy(['enabled' => true], ['position' => 'ASC']);
     }
 }
