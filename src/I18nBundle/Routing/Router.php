@@ -224,6 +224,8 @@ class Router extends FrameworkBaseRouter
 
     /**
      * To make compatible with Symfony <2.4
+     * @param Request $request
+     * @return array
      */
     public function matchRequest(Request $request)
     {
@@ -368,13 +370,12 @@ class Router extends FrameworkBaseRouter
         if (!isset($params['_locale'])
             && $this->container->isScopeActive('request')
             && $locale = $this->localeResolver->resolveLocale(
-                $this->container->get('request_stack')->getCurrentRequest(),
+                $this->container->get('request_stack')->getMasterRequest(),
                 $this->container->getParameter('jms_i18n_routing.locales')
             )
         ) {
             $params['_locale'] = $locale;
         }
-
         return $params;
     }
 }
