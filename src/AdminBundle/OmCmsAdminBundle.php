@@ -11,4 +11,12 @@ class OmCmsAdminBundle extends Bundle
     {
         parent::build($container);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent()
+    {
+        return 'SonataAdminBundle';
+    }
 }

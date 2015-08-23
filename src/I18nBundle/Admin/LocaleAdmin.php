@@ -54,8 +54,8 @@ class LocaleAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('alias')
-            ->add('enabled')
-            ->add('position');
+            ->add('enabled', null, ['required' => false])
+            ->add('position', null, ['required' => false]);
     }
 
     /**

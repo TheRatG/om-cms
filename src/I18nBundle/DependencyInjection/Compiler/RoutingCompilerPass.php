@@ -4,20 +4,14 @@ namespace TheRat\OmCms\I18nBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Yaml\Parser;
+use TheRat\OmCms\I18nBundle\Helper\Locales;
 
 class RoutingCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        $filename = $container->getParameter('kernel.cache_dir') . '/../locales.yml';
-        $container->setParameter('om_cms_i18n.locale.filename', $filename);
-        $fs = new Filesystem();
-        if ($fs->exists($filename)) {
-            $parser = new Parser();
-            $value = $parser->parse(file_get_contents($filename));
-            $locales = $value['parameters']['om_cms_i18n.locale.aliases'];
+        $locales = Locales::getDbLocalesFromFile($container->getParameter('om_cms_i18n.locale.filename'));
+        if (!empty($locales)) {
             $container->setParameter('jms_i18n_routing.locales', $locales);
         }
 
